@@ -3,6 +3,7 @@ package bitspilani.goa.letsPlay.menu;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import bitspilani.goa.letsPlay.R;
+import bitspilani.goa.letsPlay.retrofit.TemplateService;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+
+import static android.content.ContentValues.TAG;
 
 /*setting up menu list in app for selection
  * among next activity to perform or
@@ -19,12 +28,10 @@ import bitspilani.goa.letsPlay.R;
  */
 public class Menu extends ListActivity {
 
-//    String arr[] = {"MainActivity", "TextPlay", "Email", "SnapShot", "GetData",
-//            "Grafix", "GrafixSurface", "SoundStuff", "Slider", "HorizontalTabs",
-//            "SimpleBrowser", "Flipp", "SharedPrefData", "DataToInternal",
-//            "DataToExternal", "DatabaseData"};
-
-    String arr[] = {"GetData"};
+    String arr[] = {"MainActivity", "TextPlay", "Email", "SnapShot", "GetData",
+            "Grafix", "GrafixSurface", "SoundStuff", "Slider", "HorizontalTabs",
+            "SimpleBrowser", "Flipp", "SharedPrefData", "DataToInternal",
+            "DataToExternal", "DatabaseData"};
 
 
     //creating menu
@@ -32,6 +39,28 @@ public class Menu extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
+
+//        backend rest calls template
+//        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .addInterceptor(new HttpLoggingInterceptor())
+//                .build();
+//
+//        Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
+//                .client(okHttpClient)
+//                .addConverterFactory(JacksonConverterFactory.create())
+//                .baseUrl("http://13.250.111.164:8098/billshare/");
+//        Retrofit retrofit = retrofitBuilder.build();
+//        TemplateService billshareService = retrofit.create(TemplateService.class);
+//
+//        Thread thread = new Thread(() -> {
+//            try {
+//                Response<String> userResponseDtoResponse = billshareService.getUsers().execute();
+//                System.out.println(userResponseDtoResponse.body());
+//            } catch (Exception e) {
+//                Log.e(TAG, e.getMessage());
+//            }
+//        });
+//        thread.start();
 
         /*another method of creating intent
          * using class variable method
